@@ -646,6 +646,7 @@
     overflow: hidden;
   }
   .map svg{ width: 100%; height: 100%; display: block; }
+  .map iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
   .map .pin{
     position: absolute;
     left: 58%; top: 50%;
@@ -1204,7 +1205,8 @@
 
 <!-- ───────────── HERO ───────────── -->
 <section class="hero" id="topo">
-  <video autoplay muted loop playsinline poster="assets/01-fachada.png">
+  <video autoplay muted loop playsinline preload="auto" poster="assets/01-fachada.png">
+    <source src="uploads/Modern_luxury_duplex_house_facade_202605221539.mp4" type="video/mp4" />
     <source src="assets/fachada.mp4" type="video/mp4" />
   </video>
   <div class="hero-content">
@@ -1284,7 +1286,7 @@
 <section class="story">
   <div class="story-row reverse">
     <div class="img-reveal story-img">
-      <video autoplay muted loop playsinline poster="assets/03-churrasqueira.png">
+      <video autoplay muted loop playsinline preload="none" poster="assets/03-churrasqueira.png">
         <source src="assets/churrasqueira-familia.mp4" type="video/mp4" />
       </video>
       <div class="tag">Quintal &nbsp;/&nbsp; em família</div>
@@ -1448,35 +1450,13 @@
 
     <div class="loc-grid">
       <div class="map reveal">
-        <svg viewBox="0 0 600 480" preserveAspectRatio="none" aria-hidden="true">
-          <defs>
-            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#ddd0b8" stroke-width="0.5"/>
-            </pattern>
-            <pattern id="green" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-              <line x1="0" y1="0" x2="0" y2="6" stroke="#8a8a5c" stroke-width="1" opacity="0.45"/>
-            </pattern>
-          </defs>
-          <rect width="600" height="480" fill="url(#grid)"/>
-          <!-- green blocks -->
-          <rect x="320" y="180" width="80" height="60" fill="url(#green)" rx="2"/>
-          <rect x="180" y="290" width="60" height="50" fill="url(#green)" rx="2"/>
-          <rect x="60" y="60" width="50" height="50" fill="url(#green)" rx="2"/>
-          <!-- highway raposo -->
-          <path d="M -20 100 Q 200 160 380 240 T 640 400" stroke="#1a1612" stroke-width="3.5" fill="none"/>
-          <path d="M -20 100 Q 200 160 380 240 T 640 400" stroke="#c25a2c" stroke-width="1" fill="none" stroke-dasharray="6 6"/>
-          <text x="60" y="125" font-family="JetBrains Mono" font-size="9" fill="#5a4e3e" letter-spacing="2">ROD. RAPOSO TAVARES · KM 21</text>
-          <!-- rodoanel -->
-          <path d="M 500 -20 Q 470 200 380 300 T 240 490" stroke="#1a1612" stroke-width="2.5" fill="none" opacity="0.65"/>
-          <text x="445" y="50" font-family="JetBrains Mono" font-size="9" fill="#5a4e3e" letter-spacing="2" transform="rotate(60 445 50)">RODOANEL · OESTE</text>
-          <!-- secondary streets -->
-          <path d="M 100 240 L 500 260" stroke="#5a4e3e" stroke-width="0.7" fill="none" opacity="0.45"/>
-          <path d="M 240 70 L 280 440" stroke="#5a4e3e" stroke-width="0.7" fill="none" opacity="0.45"/>
-          <path d="M 60 340 L 540 360" stroke="#5a4e3e" stroke-width="0.7" fill="none" opacity="0.45"/>
-          <text x="190" y="320" font-family="JetBrains Mono" font-size="8" fill="#6b6232" letter-spacing="1.5">PARQUE</text>
-        </svg>
-        <div class="pin"></div>
-        <div class="pin-label">Rua Peloponeso, 314</div>
+        <iframe
+          src="https://maps.google.com/maps?q=Rua+Peloponeso,+314,+Granja+Viana,+Cotia,+SP&output=embed&hl=pt-BR&z=16"
+          title="Localização — Rua Peloponeso, 314, Granja Viana"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
       </div>
 
       <div class="nearby reveal reveal-d2">
