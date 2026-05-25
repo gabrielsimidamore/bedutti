@@ -1,0 +1,896 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sobrado · The Square Village · Granja Viana</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --bg:        #f3eee7;
+    --bg-deep:   #ece5db;
+    --paper:     #f8f5f0;
+    --ink:       #1c1a17;
+    --ink-soft:  #4a443d;
+    --rule:      #c9bfb1;
+    --rule-soft: #ddd3c4;
+    --accent:    oklch(0.52 0.07 45);   /* terracota sóbria */
+    --gold:      oklch(0.62 0.06 75);   /* areia queimada  */
+    --serif:     "Cormorant Garamond", "EB Garamond", Garamond, "Times New Roman", serif;
+    --sans:      "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --mono:      "JetBrains Mono", ui-monospace, Menlo, monospace;
+  }
+
+  *{ box-sizing: border-box; }
+  html, body{ margin:0; padding:0; }
+  body{
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  a{ color: inherit; }
+  ::selection{ background: var(--ink); color: var(--bg); }
+
+  .wrap{ max-width: 1320px; margin: 0 auto; padding: 0 48px; }
+  .rule{ height: 1px; background: var(--rule); border: 0; margin: 0; }
+  .rule.soft{ background: var(--rule-soft); }
+
+  .micro{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  /* ───────────── header ───────────── */
+  header.top{
+    position: sticky; top: 0; z-index: 30;
+    background: var(--bg);
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .top-inner{
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 18px 48px;
+    gap: 24px;
+  }
+  .brand{
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 22px;
+    letter-spacing: 0.01em;
+  }
+  .brand span{ font-style: normal; font-weight: 400; }
+  .top-nav{
+    display: flex; gap: 28px; justify-content: center;
+    font-size: 12.5px; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .top-nav a{ text-decoration: none; }
+  .top-nav a:hover{ color: var(--ink); }
+  .top-cta{
+    justify-self: end;
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 10px 16px;
+    border: 1px solid var(--ink);
+    text-decoration: none;
+    color: var(--ink);
+    background: transparent;
+    transition: background .2s, color .2s;
+  }
+  .top-cta:hover{ background: var(--ink); color: var(--bg); }
+  .top-cta .dot{ width:6px; height:6px; border-radius:50%; background: #25d366; box-shadow: 0 0 0 3px rgba(37,211,102,.18); }
+
+  /* ───────────── hero ───────────── */
+  .hero{
+    padding: 56px 0 0;
+  }
+  .hero-head{
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 80px;
+    padding: 0 0 48px;
+  }
+  .hero-meta{
+    display: flex; justify-content: space-between;
+    margin-bottom: 36px;
+  }
+  .hero h1{
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(46px, 5.4vw, 84px);
+    line-height: 0.98;
+    letter-spacing: -0.015em;
+    margin: 0;
+    color: var(--ink);
+  }
+  .hero h1 em{
+    font-style: italic;
+    font-weight: 300;
+    color: var(--accent);
+  }
+  .hero-sub{
+    font-family: var(--serif);
+    font-size: 22px;
+    font-style: italic;
+    color: var(--ink-soft);
+    margin-top: 22px;
+    line-height: 1.35;
+    max-width: 26ch;
+  }
+  .hero-aside{
+    align-self: end;
+    padding-bottom: 8px;
+  }
+  .hero-aside p{
+    font-size: 14.5px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    max-width: 38ch;
+    margin: 0 0 24px;
+  }
+  .hero-price{
+    display: flex; align-items: baseline; gap: 14px;
+    border-top: 1px solid var(--rule);
+    padding-top: 20px;
+  }
+  .hero-price .label{
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.16em;
+    text-transform: uppercase; color: var(--ink-soft);
+  }
+  .hero-price .value{
+    font-family: var(--serif); font-size: 30px; letter-spacing: -0.01em;
+  }
+  .hero-price .value small{
+    font-family: var(--sans); font-size: 12px;
+    color: var(--ink-soft); margin-left: 8px;
+    letter-spacing: 0.06em; text-transform: uppercase;
+  }
+
+  /* ───────────── hero image strip ───────────── */
+  .hero-image{
+    position: relative;
+    aspect-ratio: 16 / 8.2;
+    background:
+      repeating-linear-gradient(135deg, var(--bg-deep) 0 14px, var(--paper) 14px 28px);
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero-image::after{
+    content: "";
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 70% 60%, rgba(28,26,23,.08), transparent 55%);
+    pointer-events: none;
+  }
+  .placeholder-tag{
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink-soft);
+    background: var(--paper);
+    padding: 10px 16px;
+    border: 1px solid var(--rule);
+    z-index: 1;
+  }
+  .hero-corner{
+    position: absolute; padding: 18px 22px;
+    font-family: var(--mono); font-size: 10.5px;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--ink);
+    z-index: 1;
+  }
+  .hero-corner.tl{ top: 0; left: 0; }
+  .hero-corner.tr{ top: 0; right: 0; text-align: right; }
+  .hero-corner.bl{ bottom: 0; left: 0; }
+  .hero-corner.br{ bottom: 0; right: 0; text-align: right; }
+
+  /* ───────────── facts strip ───────────── */
+  .facts{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    border-bottom: 1px solid var(--rule);
+  }
+  .fact{
+    padding: 36px 28px 32px;
+    border-right: 1px solid var(--rule-soft);
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .fact:last-child{ border-right: 0; }
+  .fact .k{
+    font-family: var(--mono); font-size: 10.5px;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+  .fact .v{
+    font-family: var(--serif); font-size: 36px; line-height: 1; font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+  .fact .v small{
+    font-family: var(--sans); font-size: 12px; color: var(--ink-soft);
+    margin-left: 4px; letter-spacing: 0.04em;
+  }
+
+  /* ───────────── section scaffold ───────────── */
+  section{ padding: 110px 0; border-bottom: 1px solid var(--rule); }
+  .section-head{
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 80px;
+    margin-bottom: 64px;
+    align-items: start;
+  }
+  .section-num{
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink-soft);
+    padding-top: 10px;
+    border-top: 1px solid var(--ink);
+    display: inline-block;
+    align-self: start;
+  }
+  .section-title{
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(40px, 4vw, 60px);
+    line-height: 1.02;
+    letter-spacing: -0.015em;
+    margin: 0;
+    max-width: 18ch;
+  }
+  .section-title em{ font-style: italic; color: var(--accent); font-weight: 300; }
+
+  /* ───────────── description ───────────── */
+  .desc-grid{
+    display: grid;
+    grid-template-columns: 220px 1fr 1fr;
+    gap: 80px;
+  }
+  .desc-grid .lede{
+    grid-column: 2 / 3;
+    font-family: var(--serif);
+    font-size: 26px;
+    line-height: 1.3;
+    font-style: italic;
+    color: var(--ink);
+    font-weight: 400;
+  }
+  .desc-grid .body{
+    grid-column: 3 / 4;
+    font-size: 15px; line-height: 1.75;
+    color: var(--ink-soft);
+  }
+  .desc-grid .body p{ margin: 0 0 18px; }
+  .desc-grid .body p:last-child{ margin-bottom: 0; }
+
+  /* ───────────── gallery ───────────── */
+  .gallery{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-rows: 110px;
+    gap: 16px;
+  }
+  .gallery .cell{
+    position: relative;
+    background:
+      repeating-linear-gradient(45deg, var(--bg-deep) 0 12px, var(--paper) 12px 24px);
+    border: 1px solid var(--rule-soft);
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .gallery .cell::after{
+    content: attr(data-label);
+    font-family: var(--mono); font-size: 10.5px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink-soft);
+    background: var(--paper);
+    padding: 6px 10px; border: 1px solid var(--rule);
+  }
+  .c1{ grid-column: span 7; grid-row: span 4; }
+  .c2{ grid-column: span 5; grid-row: span 4; }
+  .c3{ grid-column: span 4; grid-row: span 3; }
+  .c4{ grid-column: span 4; grid-row: span 3; }
+  .c5{ grid-column: span 4; grid-row: span 3; }
+
+  /* ───────────── features ───────────── */
+  .features-grid{
+    display: grid;
+    grid-template-columns: 220px 1fr 1fr;
+    gap: 80px;
+  }
+  .features-col h3{
+    font-family: var(--serif); font-weight: 500;
+    font-size: 22px; margin: 0 0 22px;
+    padding-bottom: 14px; border-bottom: 1px solid var(--rule);
+    letter-spacing: -0.005em;
+  }
+  .features-col ul{
+    list-style: none; padding: 0; margin: 0;
+    display: grid; gap: 14px;
+  }
+  .features-col li{
+    display: grid; grid-template-columns: 18px 1fr;
+    gap: 14px; align-items: baseline;
+    font-size: 15px; color: var(--ink);
+  }
+  .features-col li::before{
+    content: "";
+    width: 6px; height: 6px; margin-top: 7px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+  .features-col li span{
+    display: block;
+    color: var(--ink-soft);
+    font-size: 13px;
+    line-height: 1.45;
+    margin-top: 2px;
+  }
+  .features-col li::before{ grid-column: 1; }
+
+  /* ───────────── condominium split ───────────── */
+  .condo{
+    background: var(--bg-deep);
+  }
+  .condo-grid{
+    display: grid;
+    grid-template-columns: 1fr 1.05fr;
+    gap: 0;
+    align-items: stretch;
+  }
+  .condo-image{
+    aspect-ratio: 4 / 5;
+    background:
+      repeating-linear-gradient(135deg, #d8cebd 0 14px, #e6dccb 14px 28px);
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .condo-image .placeholder-tag{ background: #efe7d7; }
+  .condo-text{
+    padding: 0 0 0 80px;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .condo-text h2{
+    font-family: var(--serif); font-weight: 400;
+    font-size: clamp(40px, 4vw, 58px);
+    line-height: 1.02;
+    letter-spacing: -0.015em;
+    margin: 0 0 24px;
+  }
+  .condo-text h2 em{ font-style: italic; color: var(--accent); font-weight: 300; }
+  .condo-text .lede{
+    font-family: var(--serif); font-style: italic; font-size: 22px;
+    color: var(--ink); margin: 0 0 24px; max-width: 36ch; line-height: 1.35;
+  }
+  .condo-text p{
+    font-size: 14.5px; line-height: 1.75; color: var(--ink-soft);
+    max-width: 50ch; margin: 0 0 16px;
+  }
+  .amenities{
+    margin-top: 32px;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+    border-top: 1px solid var(--rule);
+  }
+  .amenity{
+    display: flex; align-items: baseline; gap: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .amenity:nth-child(odd){ padding-right: 24px; border-right: 1px solid var(--rule-soft); }
+  .amenity:nth-child(even){ padding-left: 24px; }
+  .amenity .num{
+    font-family: var(--mono); font-size: 10.5px;
+    letter-spacing: 0.16em; color: var(--ink-soft);
+  }
+  .amenity .name{ font-size: 15px; }
+
+  /* ───────────── location ───────────── */
+  .location-grid{
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .map{
+    aspect-ratio: 4 / 3;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    position: relative;
+    overflow: hidden;
+  }
+  .map svg{ width: 100%; height: 100%; display: block; }
+  .map .pin{
+    position: absolute;
+    left: 58%; top: 46%;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 6px rgba(177, 95, 56, .18), 0 0 0 14px rgba(177, 95, 56, .08);
+  }
+  .map .pin-label{
+    position: absolute;
+    left: calc(58% + 22px); top: calc(46% - 6px);
+    font-family: var(--mono); font-size: 10.5px;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    background: var(--paper); padding: 4px 8px;
+    border: 1px solid var(--rule);
+  }
+  .nearby h3{
+    font-family: var(--serif); font-weight: 500;
+    font-size: 22px; margin: 0 0 22px;
+    padding-bottom: 14px; border-bottom: 1px solid var(--rule);
+  }
+  .nearby ul{ list-style: none; padding: 0; margin: 0; }
+  .nearby li{
+    display: grid; grid-template-columns: 1fr auto auto;
+    gap: 20px; align-items: baseline;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--rule-soft);
+    font-size: 15px;
+  }
+  .nearby li .what{ color: var(--ink); }
+  .nearby li .where{ color: var(--ink-soft); font-size: 13px; }
+  .nearby li .dist{
+    font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.1em; color: var(--ink);
+  }
+
+  /* ───────────── floor plan ───────────── */
+  .plan-grid{
+    display: grid; grid-template-columns: 1fr 1fr; gap: 80px;
+    align-items: center;
+  }
+  .plan-image{
+    aspect-ratio: 1 / 1;
+    background: var(--paper);
+    border: 1px solid var(--rule);
+    position: relative;
+    padding: 28px;
+  }
+  .plan-image svg{ width: 100%; height: 100%; display: block; }
+  .plan-image .scale{
+    position: absolute; bottom: 18px; right: 22px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em;
+    color: var(--ink-soft); text-transform: uppercase;
+  }
+  .plan-side h3{
+    font-family: var(--serif); font-weight: 500;
+    font-size: 22px; margin: 0 0 22px;
+    padding-bottom: 14px; border-bottom: 1px solid var(--rule);
+  }
+  .plan-side p{ font-size: 14.5px; color: var(--ink-soft); line-height: 1.75; max-width: 50ch; }
+  .areas{
+    margin-top: 28px;
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1px; background: var(--rule-soft);
+    border: 1px solid var(--rule-soft);
+  }
+  .areas div{
+    background: var(--bg);
+    padding: 20px;
+  }
+  .areas .k{
+    font-family: var(--mono); font-size: 10.5px;
+    letter-spacing: 0.16em; color: var(--ink-soft);
+    text-transform: uppercase;
+  }
+  .areas .v{
+    font-family: var(--serif); font-size: 30px; margin-top: 6px;
+  }
+  .areas .v small{ font-family: var(--sans); font-size: 12px; color: var(--ink-soft); }
+
+  /* ───────────── CTA ───────────── */
+  .cta{
+    background: var(--ink);
+    color: var(--bg);
+    padding: 120px 0;
+    border: 0;
+  }
+  .cta .wrap{ display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .cta h2{
+    font-family: var(--serif); font-weight: 300;
+    font-size: clamp(46px, 5vw, 76px);
+    line-height: 1; letter-spacing: -0.015em;
+    margin: 0;
+  }
+  .cta h2 em{ font-style: italic; color: var(--gold); }
+  .cta .micro{ color: rgba(243, 238, 231, 0.55); margin-bottom: 22px; }
+  .cta .agent{
+    display: flex; flex-direction: column; gap: 18px;
+  }
+  .cta .agent-name{
+    font-family: var(--serif); font-size: 26px;
+    border-top: 1px solid rgba(243, 238, 231, 0.18);
+    padding-top: 20px;
+  }
+  .cta .agent-name small{
+    display: block;
+    font-family: var(--sans); font-size: 12px;
+    color: rgba(243, 238, 231, 0.55);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .cta .wa{
+    display: inline-flex; align-items: center; gap: 14px;
+    background: #25d366;
+    color: #0c2a18;
+    padding: 20px 28px;
+    font-family: var(--sans); font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    width: max-content;
+    transition: transform .15s ease;
+  }
+  .cta .wa:hover{ transform: translateY(-2px); }
+  .cta .wa svg{ width: 22px; height: 22px; fill: #0c2a18; }
+  .cta .wa .num{ font-family: var(--mono); font-weight: 500; letter-spacing: 0.04em; }
+  .cta .line{
+    display: inline-flex; align-items: center; gap: 14px;
+    color: rgba(243, 238, 231, 0.75);
+    font-size: 14px;
+  }
+  .cta .line a{ color: var(--bg); text-decoration: none; border-bottom: 1px solid rgba(243, 238, 231, 0.3); padding-bottom: 1px; }
+
+  /* ───────────── footer ───────────── */
+  footer{
+    padding: 40px 0;
+    background: var(--ink);
+    color: rgba(243, 238, 231, 0.5);
+    font-family: var(--mono);
+    font-size: 10.5px; letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border-top: 1px solid rgba(243, 238, 231, 0.1);
+  }
+  footer .wrap{ display: flex; justify-content: space-between; gap: 24px; }
+
+  /* responsive (minimal — design is desktop-first editorial) */
+  @media (max-width: 1024px){
+    .wrap{ padding: 0 28px; }
+    .top-inner{ padding: 16px 28px; grid-template-columns: 1fr auto; }
+    .top-nav{ display: none; }
+    .hero-head{ grid-template-columns: 1fr; gap: 40px; }
+    .facts{ grid-template-columns: repeat(3, 1fr); }
+    .fact:nth-child(3n){ border-right: 0; }
+    .fact:nth-child(-n+3){ border-bottom: 1px solid var(--rule-soft); }
+    .section-head, .desc-grid, .features-grid, .condo-grid, .location-grid, .plan-grid, .cta .wrap{
+      grid-template-columns: 1fr; gap: 36px;
+    }
+    .desc-grid .lede, .desc-grid .body{ grid-column: 1; }
+    .condo-text{ padding: 40px 28px; }
+    .gallery{ grid-auto-rows: 90px; }
+    .c1, .c2{ grid-column: span 12; grid-row: span 3; }
+    .c3, .c4, .c5{ grid-column: span 6; grid-row: span 2; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ───────────── HEADER ───────────── -->
+<header class="top">
+  <div class="top-inner">
+    <div class="brand">Godói<span> · Imóveis selecionados</span></div>
+    <nav class="top-nav">
+      <a href="#imovel">O imóvel</a>
+      <a href="#galeria">Galeria</a>
+      <a href="#caracteristicas">Características</a>
+      <a href="#condominio">Condomínio</a>
+      <a href="#localizacao">Localização</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <a class="top-cta" href="#contato">
+      <span class="dot"></span>
+      Agendar visita
+    </a>
+  </div>
+</header>
+
+<!-- ───────────── HERO ───────────── -->
+<section class="hero" id="imovel" style="border:0; padding-top:56px; padding-bottom:0;">
+  <div class="wrap">
+
+    <div class="hero-meta">
+      <span class="micro">Cód. 464 &nbsp;·&nbsp; Ref. 539</span>
+      <span class="micro">Granja Viana · Cotia / SP</span>
+    </div>
+
+    <div class="hero-head">
+      <div>
+        <h1>Um sobrado novo,<br/><em>no ritmo</em> da Granja.</h1>
+        <p class="hero-sub">Três dormitórios, integração total com o quintal e a serenidade de um condomínio fechado a poucos minutos da Raposo.</p>
+      </div>
+      <aside class="hero-aside">
+        <p>Sobrado novo de 125 m², projeto contemporâneo, dentro do The Square Village — loteamento residencial cercado por 8.000 m² de área verde preservada.</p>
+        <div class="hero-price">
+          <span class="label">Valor</span>
+          <span class="value">Sob consulta<small>Venda direta</small></span>
+        </div>
+      </aside>
+    </div>
+
+  </div>
+
+  <div class="hero-image" role="img" aria-label="Foto principal do imóvel">
+    <div class="hero-corner tl">Fachada · Vista frontal</div>
+    <div class="hero-corner tr">Foto 01 / 18</div>
+    <div class="hero-corner bl">The Square Village</div>
+    <div class="hero-corner br">Rua Peloponeso, 314</div>
+    <div class="placeholder-tag">Foto fachada principal</div>
+  </div>
+
+  <!-- ───────────── FACTS ───────────── -->
+  <div class="facts">
+    <div class="fact"><span class="k">Dormitórios</span><span class="v">3</span></div>
+    <div class="fact"><span class="k">Suíte</span><span class="v">1</span></div>
+    <div class="fact"><span class="k">Banheiros</span><span class="v">2<small>+ lavabo</small></span></div>
+    <div class="fact"><span class="k">Vagas</span><span class="v">2</span></div>
+    <div class="fact"><span class="k">Área privativa</span><span class="v">125<small>m²</small></span></div>
+    <div class="fact"><span class="k">Área total</span><span class="v">133,8<small>m²</small></span></div>
+  </div>
+</section>
+
+<!-- ───────────── DESCRIPTION ───────────── -->
+<section>
+  <div class="wrap">
+    <div class="desc-grid">
+      <div>
+        <span class="section-num">01 — O imóvel</span>
+      </div>
+      <p class="lede">
+        Um projeto novo, pensado para a vida de família, com a sala integrada ao quintal e a churrasqueira como ponto de encontro.
+      </p>
+      <div class="body">
+        <p>Sobrado novo em condomínio fechado, com 125 m² de área construída e excelente padrão de acabamento. Localização estratégica na <strong style="color:var(--ink); font-weight:500;">Granja Viana, Km 21 da Raposo Tavares</strong> — ao lado do Rodoanel e a passos da Padaria Dona Deôla.</p>
+        <p>O pavimento térreo se abre para o quintal através da sala integrada, com churrasqueira preparada para receber. A cozinha já vem com móveis planejados, e o lavabo, a área de serviço e a entrada lateral resolvem o dia a dia com discrição.</p>
+        <p>No segundo pavimento, três dormitórios — sendo um suíte — distribuídos com privacidade. Toda a casa está pronta para receber ar-condicionado split e instalação de água quente, sem reforma.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── GALLERY ───────────── -->
+<section id="galeria">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">02 — Galeria</span>
+      <h2 class="section-title">Ambientes <em>integrados,</em> luz natural em todos os cômodos.</h2>
+    </div>
+    <div class="gallery">
+      <div class="cell c1" data-label="Sala integrada · Churrasqueira"></div>
+      <div class="cell c2" data-label="Cozinha planejada"></div>
+      <div class="cell c3" data-label="Suíte master"></div>
+      <div class="cell c4" data-label="Quintal &amp; varanda"></div>
+      <div class="cell c5" data-label="Banheiro social"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── FEATURES ───────────── -->
+<section id="caracteristicas">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">03 — Características</span>
+      <h2 class="section-title">Acabamento <em>cuidado,</em> pronto para morar.</h2>
+    </div>
+
+    <div class="features-grid">
+      <div></div>
+
+      <div class="features-col">
+        <h3>O pavimento térreo</h3>
+        <ul>
+          <li><div>Sala de estar e TV integradas<span>Em pé direito generoso, abrindo direto para o quintal.</span></div></li>
+          <li><div>Cozinha com móveis planejados<span>Bancada de apoio e entrada lateral de serviço.</span></div></li>
+          <li><div>Varanda com churrasqueira<span>Pré-instalação completa para uso imediato.</span></div></li>
+          <li><div>Lavabo &amp; área de serviço<span>Lavanderia independente, com ventilação cruzada.</span></div></li>
+          <li><div>2 vagas descobertas<span>Na soleira da casa, com acesso direto.</span></div></li>
+        </ul>
+      </div>
+
+      <div class="features-col">
+        <h3>O pavimento superior</h3>
+        <ul>
+          <li><div>3 dormitórios, sendo 1 suíte<span>Distribuição que separa a suíte master dos demais quartos.</span></div></li>
+          <li><div>Banheiro social completo<span>Revestimentos contemporâneos, louças brancas.</span></div></li>
+          <li><div>Preparo para ar-condicionado<span>Em todos os ambientes, sem necessidade de obra.</span></div></li>
+          <li><div>Preparo para água quente<span>Tubulação dimensionada para aquecimento central.</span></div></li>
+          <li><div>Imóvel novo — primeira moradia<span>Garantia construtiva da Godói Construtora.</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── CONDOMINIUM ───────────── -->
+<section class="condo" id="condominio" style="padding: 0;">
+  <div class="condo-grid">
+    <div class="condo-image">
+      <div class="hero-corner tl">The Square Village</div>
+      <div class="hero-corner br">173 lotes &nbsp;·&nbsp; 8.000 m² de verde</div>
+      <div class="placeholder-tag">Vista aérea do condomínio</div>
+    </div>
+
+    <div class="condo-text">
+      <div style="padding: 110px 80px 110px 0;">
+        <span class="section-num" style="margin-bottom: 24px;">04 — O condomínio</span>
+        <h2 style="margin-top: 28px;">The <em>Square Village.</em></h2>
+        <p class="lede">Um loteamento residencial com clube privativo, segurança 24h e a infraestrutura completa para morar bem em família.</p>
+        <p>Localizado na Granja Viana, em Cotia, o The Square Village reúne 173 lotes residenciais envoltos por 8.000 m² de área verde preservada. Ruas asfaltadas, rede de esgoto, drenagem pluvial e lotes demarcados — tudo entregue pela Godói Construtora.</p>
+        <p>A segurança é integral: portaria 24 horas, muros perimetrais, cerca elétrica, câmeras de monitoramento e segurança armada.</p>
+
+        <div class="amenities">
+          <div class="amenity"><span class="num">01</span><span class="name">Piscina adulto e infantil</span></div>
+          <div class="amenity"><span class="num">02</span><span class="name">Academia equipada</span></div>
+          <div class="amenity"><span class="num">03</span><span class="name">Salão de festas</span></div>
+          <div class="amenity"><span class="num">04</span><span class="name">Playground</span></div>
+          <div class="amenity"><span class="num">05</span><span class="name">Clube privativo</span></div>
+          <div class="amenity"><span class="num">06</span><span class="name">Portaria 24 horas</span></div>
+          <div class="amenity"><span class="num">07</span><span class="name">Cerca elétrica &amp; câmeras</span></div>
+          <div class="amenity"><span class="num">08</span><span class="name">Segurança armada</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── LOCATION ───────────── -->
+<section id="localizacao">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">05 — Localização</span>
+      <h2 class="section-title">Granja Viana, <em>Km 21</em> da Raposo.</h2>
+    </div>
+
+    <div class="location-grid">
+      <div class="map">
+        <svg viewBox="0 0 600 450" preserveAspectRatio="none" aria-hidden="true">
+          <defs>
+            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#ddd3c4" stroke-width="0.5"/>
+            </pattern>
+          </defs>
+          <rect width="600" height="450" fill="url(#grid)"/>
+          <!-- highway raposo -->
+          <path d="M -20 80 Q 200 140 380 220 T 640 380" stroke="#1c1a17" stroke-width="3" fill="none" opacity="0.75"/>
+          <text x="60" y="105" font-family="JetBrains Mono" font-size="9" fill="#4a443d" letter-spacing="2">ROD. RAPOSO TAVARES</text>
+          <!-- rodoanel -->
+          <path d="M 480 -20 Q 460 180 380 280 T 240 470" stroke="#1c1a17" stroke-width="2" fill="none" opacity="0.5"/>
+          <text x="430" y="50" font-family="JetBrains Mono" font-size="9" fill="#4a443d" letter-spacing="2" transform="rotate(60 430 50)">RODOANEL</text>
+          <!-- secondary streets -->
+          <path d="M 100 220 L 500 240" stroke="#4a443d" stroke-width="0.7" fill="none" opacity="0.45"/>
+          <path d="M 240 50 L 280 420" stroke="#4a443d" stroke-width="0.7" fill="none" opacity="0.45"/>
+          <path d="M 60 320 L 540 340" stroke="#4a443d" stroke-width="0.7" fill="none" opacity="0.45"/>
+          <!-- green block -->
+          <rect x="320" y="180" width="80" height="60" fill="#c9bfb1" opacity="0.35" rx="2"/>
+          <rect x="180" y="280" width="60" height="50" fill="#c9bfb1" opacity="0.35" rx="2"/>
+          <text x="190" y="310" font-family="JetBrains Mono" font-size="8" fill="#4a443d" letter-spacing="1.5">ÁREA VERDE</text>
+        </svg>
+        <div class="pin"></div>
+        <div class="pin-label">Rua Peloponeso, 314</div>
+      </div>
+
+      <div class="nearby">
+        <h3>Pontos de referência</h3>
+        <ul>
+          <li><div><div class="what">Padaria Dona Deôla</div><div class="where">Granja Viana</div></div><span class="dist">a passos</span></li>
+          <li><div><div class="what">Acesso Rodoanel</div><div class="where">Trecho Oeste</div></div><span class="dist">2 min</span></li>
+          <li><div><div class="what">Rod. Raposo Tavares</div><div class="where">Km 21</div></div><span class="dist">3 min</span></li>
+          <li><div><div class="what">Shopping Granja Vianna</div><div class="where">Av. São Camilo</div></div><span class="dist">8 min</span></li>
+          <li><div><div class="what">Colégio Vital Brazil</div><div class="where">Granja Viana</div></div><span class="dist">9 min</span></li>
+          <li><div><div class="what">Hospital São Luiz</div><div class="where">Cotia</div></div><span class="dist">12 min</span></li>
+          <li><div><div class="what">Marginal Pinheiros</div><div class="where">via Rodoanel</div></div><span class="dist">28 min</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── FLOOR PLAN ───────────── -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-num">06 — Planta</span>
+      <h2 class="section-title">125 m² <em>bem distribuídos.</em></h2>
+    </div>
+
+    <div class="plan-grid">
+      <div class="plan-image">
+        <svg viewBox="0 0 400 400" aria-hidden="true">
+          <!-- térreo block -->
+          <g stroke="#1c1a17" stroke-width="1.4" fill="none">
+            <rect x="40" y="40" width="320" height="320"/>
+            <!-- internal walls -->
+            <line x1="40" y1="170" x2="220" y2="170"/>
+            <line x1="220" y1="40" x2="220" y2="170"/>
+            <line x1="220" y1="240" x2="360" y2="240"/>
+            <line x1="220" y1="170" x2="220" y2="360"/>
+            <line x1="40" y1="270" x2="220" y2="270"/>
+          </g>
+          <g font-family="JetBrains Mono" font-size="9" fill="#4a443d" letter-spacing="1.2">
+            <text x="60" y="110">SALA</text>
+            <text x="240" y="110">COZINHA</text>
+            <text x="240" y="210">LAVABO</text>
+            <text x="60" y="220">VARANDA</text>
+            <text x="60" y="300">QUINTAL</text>
+            <text x="240" y="300">ÁREA SERV.</text>
+          </g>
+          <!-- door swings -->
+          <g stroke="#b15f38" stroke-width="1" fill="none" opacity="0.7">
+            <path d="M 180 170 A 25 25 0 0 0 205 145" />
+            <path d="M 220 200 A 22 22 0 0 1 242 222" />
+          </g>
+        </svg>
+        <span class="scale">Pavimento térreo · esquemático</span>
+      </div>
+
+      <div class="plan-side">
+        <h3>Distribuição</h3>
+        <p>Planta inteligente, com a área social no térreo abrindo para o quintal e três dormitórios no pavimento superior. Tudo pensado para receber e descansar — sem quebrar o fluxo entre cozinha, sala e churrasqueira.</p>
+
+        <div class="areas">
+          <div><div class="k">Área privativa</div><div class="v">125<small> m²</small></div></div>
+          <div><div class="k">Área total</div><div class="v">133,8<small> m²</small></div></div>
+          <div><div class="k">Pavimentos</div><div class="v">2</div></div>
+          <div><div class="k">Estágio</div><div class="v" style="font-size:22px; padding-top:8px;">Pronto</div></div>
+        </div>
+
+        <p style="margin-top:24px; font-size: 13px;">Plantas técnicas detalhadas disponíveis sob solicitação.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── CTA ───────────── -->
+<section class="cta" id="contato">
+  <div class="wrap">
+    <div>
+      <div class="micro">07 — Agende sua visita</div>
+      <h2>Vamos <em>visitar</em> a casa juntos?</h2>
+      <p style="font-family: var(--serif); font-style: italic; font-size: 22px; margin: 26px 0 0; color: rgba(243, 238, 231, 0.75); max-width: 30ch; line-height: 1.4;">A melhor forma de sentir o imóvel é caminhar por ele. Agende um horário no seu ritmo.</p>
+    </div>
+
+    <div class="agent">
+      <a class="wa" href="https://wa.me/5511973935623?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20sobrado%20da%20Granja%20Viana%20%E2%80%93%20C%C3%B3d.%20464." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 0 1-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 0 1 8.413 3.488 11.824 11.824 0 0 1 3.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 0 1-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+        <div style="display:flex; flex-direction:column; gap:2px; align-items:flex-start;">
+          <span style="font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.7;">WhatsApp do corretor</span>
+          <span class="num">+55 11 97393-5623</span>
+        </div>
+      </a>
+
+      <div class="agent-name">
+        <small>Atendimento direto</small>
+        Corretor responsável
+      </div>
+
+      <div class="line">
+        <span class="micro" style="color: rgba(243, 238, 231, 0.45);">Cód.</span>
+        <span style="font-family: var(--mono);">464</span>
+        <span style="opacity:.3;">·</span>
+        <span class="micro" style="color: rgba(243, 238, 231, 0.45);">Ref.</span>
+        <span style="font-family: var(--mono);">539</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────────── FOOTER ───────────── -->
+<footer>
+  <div class="wrap">
+    <span>The Square Village · Cotia / SP</span>
+    <span>Godói Construtora &amp; Imóveis</span>
+    <span>2026</span>
+  </div>
+</footer>
+
+</body>
+</html>
